@@ -67,8 +67,8 @@ that all of the following files are included in `nao_top10.tar` above):
 | File | Size |
 |------|------|
 |[metadata.pkl](https://storage.googleapis.com/dm_nethack/nao_top10/metadata.pkl) | 10 KB |
-|[78291.tar](https://storage.googleapis.com/dm_nethack/nao_top10/78291.tar)|10.1 MB|
-|[Fek.tar](https://storage.googleapis.com/dm_nethack/nao_top10/Fek.tar)|1.1 GB|
+|[78291.tar](https://storage.googleapis.com/dm_nethack/nao_top10/78291.tar)| 10.1 MB|
+|[Fek.tar](https://storage.googleapis.com/dm_nethack/nao_top10/Fek.tar)| 1.1 GB|
 |[Luxidream.tar](https://storage.googleapis.com/dm_nethack/nao_top10/Luxidream.tar)| 8.2 MB |
 |[Stroller.tar](https://storage.googleapis.com/dm_nethack/nao_top10/Stroller.tar)| 3.8 GB |
 |[Tariru.tar](https://storage.googleapis.com/dm_nethack/nao_top10/Tariru.tar)| 1.5 GB |
@@ -88,11 +88,11 @@ The data is organized as ``[username]/[session_id].npz`` where session_id is a
 base64 string, and the file is in ``.npz`` format, which can be loaded using
 ``numpy``:
 
-    session = np.load(filename)                # Dict of observations
-    tty_chars = session[‘tty_chars’]            # Shape = (T, 24, 80)
-    tty_colors = session[‘tty_colors’]          # Shape = (T, 24, 80)
-    tty_background = session[‘tty_background’]  # Shape = (T, 24, 80)
-    tty_cursor = session[‘tty_cursor’]          # Shape = (T, 2,)
+    session = np.load(filename)                 # Dict of observations
+    tty_chars = session['tty_chars']            # Shape = (T, 24, 80)
+    tty_colors = session['tty_colors']          # Shape = (T, 24, 80)
+    tty_background = session['tty_background']  # Shape = (T, 24, 80)
+    tty_cursor = session['tty_cursor']          # Shape = (T, 2,)
 
 The tty_chars, tty_colors, and tty_cursor have similar semantics to the
 corresponding observations from the NLE environment. tty_background corresponds
@@ -104,9 +104,9 @@ We also include a short rendering utility that uses PyGame to generate images of
 arbitrary states, for ease of visualizing the data. The code will generate
 images of states from the dataset, as well as observations from the NLE
 environment. The renderer can also take arbitrary foreground and background
-color arrays, which we use in the paper to generate saliency visualizations and
-to highlight differences between states. The renderer can be used to visualize
-observations from the dataset as follows:
+color arrays, which we use in the [paper](https://openreview.net/forum?id=sKc6fgce1zs)
+to generate saliency visualizations and to highlight differences between states.
+The renderer can be used to visualize observations from the dataset as follows:
 
     image_renderer = ImageRenderer()
     session = np.load(filename)
@@ -129,3 +129,15 @@ Install `cmake`:
 Install `nle`, `numpy`, and `pygame`:
 
     pip install -r ./requirements.txt
+
+## Citation
+
+If you found this dataset useful for academic work, then please cite the
+corresponding paper: [Learning About Progress From Experts](https://openreview.net/forum?id=sKc6fgce1zs).
+
+    @inproceedings{brucelearning,
+      title={{Learning About Progress From Experts}},
+      author={Bruce, Jake and Anand, Ankit and Mazoure, Bogdan and Fergus, Rob},
+      booktitle={International Conference on Learning Representations},
+      year={2023}
+    }
